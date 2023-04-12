@@ -1,0 +1,18 @@
+import math
+
+# Input parameters
+K = float(input("Enter the hydraulic conductivity in ft/day: "))
+H = float(input("Enter the water level above the bottom of the well screen in ft: "))
+h = float(input("Enter the height of the well screen in ft: "))
+R = float(input("Enter the radius of influence in ft: "))
+ro = float(input("Enter the outer radius of the well casing in ft: "))
+confined = input("Is the aquifer confined? (y/n): ")
+
+# Calculation of flow rate
+if confined == 'y':
+    Q = (math.pi * K * (H**2 - h**2)) / (math.log(R/ro))
+else:
+    Q = (math.pi * K * H * (H - h)) / (math.log(R/ro))
+
+# Output results
+print(f"Flow rate: {Q:.2f} ft^3/day")
